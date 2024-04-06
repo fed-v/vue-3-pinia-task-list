@@ -63,11 +63,11 @@
   import { storeToRefs } from 'pinia';
 
 
-  // Referance the store and save it
+  // Reference the store and save it
   const taskStore = useTaskStore();
 
-  // Creates a referance to your state and getters of the store. NOT YOUR ACTIONS!
-  // That way, you don't have to do taskStore.favs in the template. Just call favs which is the referance to it!
+  // Creates a reference to your state and getters of the store. NOT YOUR ACTIONS!
+  // That way, you don't have to do taskStore.favs in the template. Just call favs which is the reference to it!
   const { tasks, loading, favs, totalCount, favCount } = storeToRefs(taskStore);
 
   // Call the getTasks() action to populate the tasks
