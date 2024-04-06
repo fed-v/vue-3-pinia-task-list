@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "title": "read a book",
+      "isFav": true,
+      "isDone": false,
+      "id": "914891ec-43e1-4061-ab70-6c973f7eecad"
+    },
+    {
+      "title": "eat some pinapples",
+      "isFav": true,
+      "isDone": false,
+      "id": "d95769f2-7d6e-45c4-a687-e1c0c2697998"
+    },
+    {
+      "title": "Make my bed",
+      "isFav": false,
+      "isDone": true,
+      "id": "ca261697-b208-4ed1-ab18-f441a82b5e6a"
+    }
+  ]
+}
