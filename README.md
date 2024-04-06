@@ -57,36 +57,6 @@ pnpm run dev
 yarn dev
 ```
 
-
-### Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-
 ## Further reading
 
 For more information about Pinia, checkout the documentation: https://pinia.vuejs.org/core-concepts/
