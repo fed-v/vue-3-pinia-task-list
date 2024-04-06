@@ -25,7 +25,7 @@
 
     <!-- task list -->
     <div class="task-list" v-if="filter === 'all'">
-      <p>You have {{ totalCount }} tasks left to do</p>
+      <p>You have {{ totalCount === 0 ? 'no' : totalCount }} {{ totalCount === 1 ? 'task' : 'tasks' }} left to do</p>
       <div v-for="task in tasks" :key="task.id">
         <TaskDetails :task="task" />
       </div>
@@ -33,7 +33,7 @@
 
     <!-- favorites list -->
     <div class="task-list" v-if="filter === 'favs'">
-      <p>You have {{ favCount }} favs left to do</p>
+      <p>You have {{ favCount === 0 ? 'no' : favCount }} favorite {{ favCount === 1 ? 'task' : 'tasks' }} left to do</p>
 
       <!-- Iterate through the task array and print the details for each -->
       <div v-for="task in favs" :key="task.id">

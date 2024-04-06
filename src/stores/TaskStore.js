@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 export const useTaskStore = defineStore('taskStore', {
 
 
-    // The state is the actual data in your store to be accessed or updated
     state: () => ({ 
         tasks: [],
         loading: false,
@@ -11,28 +10,60 @@ export const useTaskStore = defineStore('taskStore', {
     }),
 
 
-    // Getters are used to access the state of your store
     getters: {
-      favs() {
-        return this.tasks.filter(t => t.isFav);
-      },
-      favCount() {
-        return this.tasks.reduce((p, c) => {
-            return c .isFav ? p + 1 : p;
-        }, 0)
+
+      /**
+      * Gets all favorite tasks from the state.
+      * 
+      * @param {object} state - The state of the store.
+      * @returns {Task[]} - An array of favorite tasks.
+      */
+      favs(state) {
+        return state.tasks.filter(t => t.isFav); 
       },
 
-      // You can define a getter as an arrow function but you must pass the state as an argument
-      // Use the state rather than this when accessing the 
+
+      /**
+      * Gets the count of favorite tasks that are not done.
+      * 
+      * @param {object} state - The state of the store.
+      * @param {object} getters - The getters object of the store.
+      * @returns {number} - The count of favorite tasks that are not done.
+      */
+
+      // You can actually pass getters as an argument to another getter! 
+      
+      favCount(state, getters) {
+
+        // Filter out tasks that are favorites and marked as done
+        const filteredFavs = state.tasks.filter(t => t.isFav && !t.isDone);
+
+        // Return the amount of tasks that are favorites and not done
+        return filteredFavs.length;
+
+      },
+
+
+      /**
+      * Gets the total count of tasks that are not done.
+      * 
+      * @param {object} state - The state of the store.
+      * @returns {number} - The total count of tasks that are not done.
+      */
       totalCount: (state) => {
-        return state.tasks.length;
+        return state.tasks.filter(t => !t.isDone).length;
       }
+      
     },
 
 
-    // Actions are used to update the state of your store.
     actions: {
 
+      /**
+      * Fetches tasks from the server and updates the store's state with the retrieved tasks.
+      * 
+      * @returns {Promise<void>} - A promise that resolves when the tasks are fetched and updated.
+      */
       async getTasks() {
         
         this.loading = true;
@@ -48,7 +79,15 @@ export const useTaskStore = defineStore('taskStore', {
         this.loading = false;
       },
 
+
+      /**
+      * Adds a new task to the store's state and sends a POST request to the server to add the task.
+      * 
+      * @param {Task} task - The task to add.
+      * @returns {Promise<void>} - A promise that resolves when the task is successfully added.
+      */
       async addTask(task) {
+
         this.tasks.push(task); 
 
         // fetch the json db and add the new task passed as an argument
@@ -63,6 +102,13 @@ export const useTaskStore = defineStore('taskStore', {
         
       },
 
+
+      /**
+      * Deletes a task from the store's state and sends a DELETE request to the server to delete the task.
+      * 
+      * @param {number} id - The id of the task to delete.
+      * @returns {Promise<void>} - A promise that resolves when the task is successfully deleted.
+      */
       async deleteTask(id) {
 
         this.tasks = this.tasks.filter(t => {
@@ -112,7 +158,7 @@ export const useTaskStore = defineStore('taskStore', {
 
       }
 
-    },
+    }
 
 })  
   
