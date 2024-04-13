@@ -38,16 +38,19 @@
         padding: 10px 20px;
         background: #fff;
         margin-top: 20px;
-        border-radius: 4px;
+        border-radius: 10px;
         box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        
         max-height: 65px;
-        transition: max-height 0.3s;
+        transition: max-height 0.5s ease-in-out;
         overflow: hidden;
     
+    }
+
+    .task:hover {
+        box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
     }
     
     /* This changes the color of finished tasks*/
@@ -59,8 +62,7 @@
     .task.isOpen {
         max-height: 300px;
         height: auto;
-        transition: max-height 0.6s;
-    
+        transition: max-height 0.5s ease-in-out;    
     }
     
     .task p {

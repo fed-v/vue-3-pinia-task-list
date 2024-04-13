@@ -45,8 +45,10 @@ header h1 {
 /* filter nav */
 .filter {
   width: 640px;
-  margin: 10px auto;
+  margin: 16px auto;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 .filter button {
   display: inline-block;
@@ -58,6 +60,10 @@ header h1 {
   cursor: pointer;
   font-size: 0.8em;
   font-size: 1em;
+}
+
+.filter button:first-child {
+  margin-left: 0;
 }
 
 

@@ -14,8 +14,17 @@
 
     <!-- filter -->
     <nav class="filter">
-      <button @click="filter = 'all'">All tasks</button>
-      <button @click="filter = 'favs'">Fav tasks</button>
+      <div>
+
+        <!-- $reset() is a built-in method you can call to reset the state to its initial value -->
+        <button @click="taskStore.$reset">Delete list</button>
+        <button @click="taskStore.getTasks">Load tasks</button>
+        
+      </div>
+      <div>
+        <button @click="filter = 'all'">All tasks</button>
+        <button @click="filter = 'favs'">Fav tasks</button>
+      </div>
     </nav>
 
     <!-- loading -->
@@ -41,16 +50,6 @@
       </div>
 
     </div>
-
-    <!-- filter -->
-    <nav class="filter">
-
-      <!-- reset state button -->
-      <button @click="taskStore.$reset">Reset</button>
-
-      <!-- call the getTasks action and fetch the JSON -->
-      <button @click="taskStore.getTasks">Load tasks</button>
-    </nav>
 
   </main>
 </template>
