@@ -11,9 +11,9 @@
         </div>
         
         <div class="icons">
-            <i class="material-icons" @click="taskStore.deleteTask(props.task.id)">delete</i>
-            <i class="material-icons" :class="{ active: props.task.isFav }" @click="taskStore.toggleStatus(props.task.id, 'isFav')">favorite</i>
-            <i class="material-icons" @click="expandTask">{{ isExpanded ? 'expand_less' : 'expand_more' }}</i>
+            <i class="material-icons btn" @click="taskStore.deleteTask(props.task.id)">delete</i>
+            <i class="material-icons btn" :class="{ active: props.task.isFav }" @click="taskStore.toggleStatus(props.task.id, 'isFav')">favorite</i>
+            <i class="material-icons btn" :class="{ isExpanded: isExpanded }" @click="expandTask">{{ isExpanded ? 'expand_less' : 'expand_more' }}</i>
         </div>
 
     </div>
@@ -46,7 +46,6 @@
         max-height: 65px;
         transition: max-height 0.5s ease-in-out;
         overflow: hidden;
-    
     }
 
     .task:hover {
@@ -80,17 +79,6 @@
 
     .task .icons {
         text-align: right;
-    }
-
-    .task i {
-        font-size: 1.4em;
-        margin-left: 6px;
-        cursor: pointer;
-        color: #bbb;
-    }
-
-    .task i.active {
-        color: #ff005d;
     }
     
 </style>

@@ -7,11 +7,6 @@
       <h1>Pinia Tasks</h1>
     </header>
 
-    <!-- new task form 
-    <div class="new-task-form">
-      <TaskForm />
-    </div>-->
-
     <!-- filter -->
     <nav class="filter">
       <div>
@@ -58,7 +53,7 @@
     <ModalComponent :isOpen="isModalOpened" @modal-close="closeModal" @submit="submitHandler" name="first-modal">
 
       <template #header>
-        <h2>Add a new task</h2>
+        <h3 class="form-title">Add a new task</h3>
       </template>
 
       <template #content>
@@ -69,7 +64,6 @@
         
     </ModalComponent>
     
-
   </main>
 </template>
 
@@ -96,19 +90,15 @@
   // Create a filter variable and make it dynamic. Initial value is 'all'
   const filter = ref('all');
 
-
   const isModalOpened = ref(false);
 
   const openModal = () => {
     isModalOpened.value = true;
   };
+
   const closeModal = () => {
     isModalOpened.value = false;
   };
-
-  const submitHandler = ()=>{
-    //here you do whatever
-  }
 
 </script>
  
