@@ -7,15 +7,19 @@
       <h1>Pinia Tasks</h1>
     </header>
 
-    <!-- new task form -->
-    <div class="new-task-form">
-      <TaskForm />
-    </div>
-
     <!-- filter -->
     <nav class="filter">
-      <button @click="filter = 'all'">All tasks</button>
-      <button @click="filter = 'favs'">Fav tasks</button>
+      <div>
+
+        <!-- $reset() is a built-in method you can call to reset the state to its initial value -->
+        <button @click="taskStore.$reset">Delete list</button>
+        <button @click="taskStore.getTasks">Load tasks</button>
+
+      </div>
+      <div>
+        <button @click="filter = 'all'">All tasks</button>
+        <button @click="filter = 'favs'">Fav tasks</button>
+      </div>
     </nav>
 
     <!-- loading -->
@@ -42,16 +46,24 @@
 
     </div>
 
-    <!-- filter -->
-    <nav class="filter">
+    <div class="add-new-section">
+      <button class="add-btn" @click="openModal">Add task</button>
+    </div>
 
-      <!-- reset state button -->
-      <button @click="taskStore.$reset">Reset</button>
+    <ModalComponent :isOpen="isModalOpened" @modal-close="closeModal" @submit="submitHandler" name="first-modal">
 
-      <!-- call the getTasks action and fetch the JSON -->
-      <button @click="taskStore.getTasks">Load tasks</button>
-    </nav>
+      <template #header>
+        <h3 class="form-title">Add a new task</h3>
+      </template>
 
+      <template #content>
+        <div>
+          <TaskForm @modal-close="closeModal"/>
+        </div>
+      </template>
+        
+    </ModalComponent>
+    
   </main>
 </template>
 
@@ -61,6 +73,8 @@
   import TaskForm from './components/TaskForm.vue';
   import { useTaskStore } from './stores/TaskStore';
   import { storeToRefs } from 'pinia';
+  import ModalComponent from "./components/ModalComponent.vue";
+
 
 
   // Reference the store and save it
@@ -75,6 +89,16 @@
 
   // Create a filter variable and make it dynamic. Initial value is 'all'
   const filter = ref('all');
+
+  const isModalOpened = ref(false);
+
+  const openModal = () => {
+    isModalOpened.value = true;
+  };
+
+  const closeModal = () => {
+    isModalOpened.value = false;
+  };
 
 </script>
  

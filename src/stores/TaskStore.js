@@ -30,10 +30,8 @@ export const useTaskStore = defineStore('taskStore', {
       * @param {object} getters - The getters object of the store.
       * @returns {number} - The count of favorite tasks that are not done.
       */
-
-      // You can actually pass getters as an argument to another getter! 
       
-      favCount(state, getters) {
+      favCount(state) {
 
         // Filter out tasks that are favorites and marked as done
         const filteredFavs = state.tasks.filter(t => t.isFav && !t.isDone);
