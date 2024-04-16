@@ -28,6 +28,16 @@
                 id: window.crypto.randomUUID()
             })
             newTask.value = '';
+
+            // Emit the modal-close event to close the modal
+            emit('modal-close');
+
         }
     };        
+
+
+    // Define the emit function the parent component will use to close the modal
+    const emit = defineEmits(["modal-close"]);
+
+
 </script>

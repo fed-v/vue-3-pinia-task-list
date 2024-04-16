@@ -7,10 +7,10 @@
       <h1>Pinia Tasks</h1>
     </header>
 
-    <!-- new task form -->
+    <!-- new task form 
     <div class="new-task-form">
       <TaskForm />
-    </div>
+    </div>-->
 
     <!-- filter -->
     <nav class="filter">
@@ -19,7 +19,7 @@
         <!-- $reset() is a built-in method you can call to reset the state to its initial value -->
         <button @click="taskStore.$reset">Delete list</button>
         <button @click="taskStore.getTasks">Load tasks</button>
-        
+
       </div>
       <div>
         <button @click="filter = 'all'">All tasks</button>
@@ -51,6 +51,25 @@
 
     </div>
 
+    <div class="add-new-section">
+      <button class="add-btn" @click="openModal">Add task</button>
+    </div>
+
+    <ModalComponent :isOpen="isModalOpened" @modal-close="closeModal" @submit="submitHandler" name="first-modal">
+
+      <template #header>
+        <h2>Add a new task</h2>
+      </template>
+
+      <template #content>
+        <div>
+          <TaskForm @modal-close="closeModal"/>
+        </div>
+      </template>
+        
+    </ModalComponent>
+    
+
   </main>
 </template>
 
@@ -60,6 +79,8 @@
   import TaskForm from './components/TaskForm.vue';
   import { useTaskStore } from './stores/TaskStore';
   import { storeToRefs } from 'pinia';
+  import ModalComponent from "./components/ModalComponent.vue";
+
 
 
   // Reference the store and save it
@@ -74,6 +95,20 @@
 
   // Create a filter variable and make it dynamic. Initial value is 'all'
   const filter = ref('all');
+
+
+  const isModalOpened = ref(false);
+
+  const openModal = () => {
+    isModalOpened.value = true;
+  };
+  const closeModal = () => {
+    isModalOpened.value = false;
+  };
+
+  const submitHandler = ()=>{
+    //here you do whatever
+  }
 
 </script>
  

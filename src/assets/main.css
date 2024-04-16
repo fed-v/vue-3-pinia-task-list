@@ -20,7 +20,7 @@ body * {
 header {
   text-align: center;
   background: #e7e7e7;
-  padding-top: 20px;
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +79,7 @@ form {
   grid-template-columns: 3fr 1fr;
   gap: 10px;
 }
-form button {
+.add-btn {
   background: #ffd859;
   border: 0;
   padding: 10px;
@@ -94,6 +94,13 @@ form input {
   border-radius: 6px;
   color: #555;
   font-size: 1em;
+}
+
+/* Add new task button*/
+.add-new-section {
+  width: 640px;
+  margin: 16px auto;
+  text-align: right;
 }
 
 
