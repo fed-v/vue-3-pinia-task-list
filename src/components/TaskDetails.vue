@@ -1,5 +1,7 @@
 <template>
-    <div class="task" :class="{ done: props.task.isDone, isOpen: isExpanded }">
+
+    <!-- The first object in :class are class name: <condition> whereas the second item is a call to a computed method -->
+    <div class="task" :class="[ { done: props.task.isDone, isOpen: isExpanded }, priorityClassName ]">
 
         <div>
             <input @click="taskStore.toggleStatus(props.task.id, 'isDone')" type="checkbox" id="" name="" value="" :checked="props.task.isDone"/>
@@ -17,19 +19,34 @@
         </div>
 
     </div>
+
 </template>
 
 <script setup>
+
     import { useTaskStore } from '../stores/TaskStore';
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
 
     const isExpanded = ref(false);
     const props = defineProps(['task']);
     const taskStore = useTaskStore();
 
+    // Compute the class name dynamically based on the value of props.task.priority
+    const priorityClassName = computed(() => {
+
+        // Determine the class name based on the priority value
+        return {
+            urgent: props.task.priority === 'urgent',
+            important: props.task.priority === 'important',
+            normal: props.task.priority === 'normal'
+        }
+
+    });
+
     function expandTask() {
       isExpanded.value = !isExpanded.value;
     }
+
 </script>
 
 <style scoped>
@@ -53,6 +70,13 @@
     }
     
     /* This changes the color of finished tasks*/
+    
+    .task.important{
+        background: yellow;
+    }
+    .task.urgent{
+        background: red;
+    }
     .task.done{
         background: #E0E0E0;
     }
