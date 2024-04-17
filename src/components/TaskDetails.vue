@@ -3,19 +3,23 @@
     <!-- The first object in :class are class name: <condition> whereas the second item is a call to a computed method -->
     <div class="task" :class="[ { done: props.task.isDone, isOpen: isExpanded }, priorityClassName ]">
 
-        <div>
-            <input @click="taskStore.toggleStatus(props.task.id, 'isDone')" type="checkbox" id="" name="" value="" :checked="props.task.isDone"/>
-            <h3>{{ props.task.title }}</h3>
+        <div class="task-header">
 
-            <p>
-                {{ props.task.description }}
-            </p>
+            <div>
+                <input @click="taskStore.toggleStatus(props.task.id, 'isDone')" type="checkbox" id="" name="" value="" :checked="props.task.isDone"/>
+                <h3>{{ props.task.title }}</h3><span class="priority-title" v-if="props.task.priority === 'urgent' | props.task.priority === 'important'">* {{ props.task.priority}}</span>
+            </div>
+            
+            <div class="icons">
+                <i class="material-icons btn" @click="taskStore.deleteTask(props.task.id)">delete</i>
+                <i class="material-icons btn" :class="{ active: props.task.isFav }" @click="taskStore.toggleStatus(props.task.id, 'isFav')">favorite</i>
+                <i class="material-icons btn" :class="{ isExpanded: isExpanded }" @click="expandTask">{{ isExpanded ? 'expand_less' : 'expand_more' }}</i>
+            </div>
+
         </div>
-        
-        <div class="icons">
-            <i class="material-icons btn" @click="taskStore.deleteTask(props.task.id)">delete</i>
-            <i class="material-icons btn" :class="{ active: props.task.isFav }" @click="taskStore.toggleStatus(props.task.id, 'isFav')">favorite</i>
-            <i class="material-icons btn" :class="{ isExpanded: isExpanded }" @click="expandTask">{{ isExpanded ? 'expand_less' : 'expand_more' }}</i>
+
+        <div class="description-container">
+            <p class="task-description">{{ props.task.description }}</p>
         </div>
 
     </div>
@@ -57,12 +61,19 @@
         margin-top: 20px;
         border-radius: 10px;
         box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
         max-height: 65px;
         transition: max-height 0.5s ease-in-out;
         overflow: hidden;
+    }
+
+    .task-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .description-container {
+        width: 100%;
     }
 
     .task:hover {
@@ -72,10 +83,10 @@
     /* This changes the color of finished tasks*/
     
     .task.important{
-        background: yellow;
+        background: #ffd859;
     }
     .task.urgent{
-        background: red;
+        background: lightcoral;
     }
     .task.done{
         background: #E0E0E0;
@@ -90,6 +101,7 @@
     
     .task p {
         margin-left: 40px;
+        line-height: 25px;
     }
     
     .task h3, .task .icons {
@@ -103,6 +115,11 @@
 
     .task .icons {
         text-align: right;
+    }
+
+    .priority-title {
+        margin-left: 10px;
+        font-style: italic;
     }
     
 </style>
