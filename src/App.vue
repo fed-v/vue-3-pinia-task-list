@@ -7,48 +7,53 @@
       <h1>Pinia Tasks</h1>
     </header>
 
-    <!-- filter -->
-    <nav class="filter">
-      <div>
+    <section class="main-container">
 
-        <!-- $reset() is a built-in method you can call to reset the state to its initial value -->
-        <button @click="taskStore.$reset">Delete list</button>
-        <button @click="taskStore.getTasks">Load tasks</button>
+      <!-- filter -->
+      <nav class="filter">
+        <div>
 
-      </div>
-      <div>
-        <button @click="filter = 'all'">All tasks</button>
-        <button @click="filter = 'favs'">Fav tasks</button>
-      </div>
-    </nav>
+          <!-- $reset() is a built-in method you can call to reset the state to its initial value -->
+          <button @click="taskStore.$reset">Delete list</button>
+          <button @click="taskStore.getTasks">Load tasks</button>
 
-    <!-- loading -->
-    <div class="loading" v-if="loading">
-      <h4>Loading...</h4>
-    </div>
+        </div>
+        <div>
+          <button @click="filter = 'all'">All tasks</button>
+          <button @click="filter = 'favs'">Fav tasks</button>
+        </div>
+      </nav>
 
-    <!-- task list -->
-    <div class="task-list" v-if="filter === 'all'">
-      <p>You have {{ totalCount === 0 ? 'no' : totalCount }} {{ totalCount === 1 ? 'task' : 'tasks' }} left to do</p>
-      <div v-for="task in tasks" :key="task.id">
-        <TaskDetails :task="task" />
-      </div>
-    </div>
-
-    <!-- favorites list -->
-    <div class="task-list" v-if="filter === 'favs'">
-      <p>You have {{ favCount === 0 ? 'no' : favCount }} favorite {{ favCount === 1 ? 'task' : 'tasks' }} left to do</p>
-
-      <!-- Iterate through the task array and print the details for each -->
-      <div v-for="task in favs" :key="task.id">
-        <TaskDetails :task="task" />
+      <!-- loading -->
+      <div class="loading" v-if="loading">
+        <h4>Loading...</h4>
       </div>
 
-    </div>
+      <!-- task list -->
+      <div class="task-list" v-if="filter === 'all'">
+        <p>You have {{ totalCount === 0 ? 'no' : totalCount }} {{ totalCount === 1 ? 'task' : 'tasks' }} left to do</p>
+        <div v-for="task in tasks" :key="task.id">
+          <TaskDetails :task="task" />
+        </div>
+      </div>
 
-    <div class="add-new-section">
-      <button class="add-btn" @click="openModal">Add task</button>
-    </div>
+      <!-- favorites list -->
+      <div class="task-list" v-if="filter === 'favs'">
+        <p>You have {{ favCount === 0 ? 'no' : favCount }} favorite {{ favCount === 1 ? 'task' : 'tasks' }} left to do</p>
+
+        <!-- Iterate through the task array and print the details for each -->
+        <div v-for="task in favs" :key="task.id">
+          <TaskDetails :task="task" />
+        </div>
+
+      </div>
+
+      <div class="add-new-section">
+        <button class="add-btn" @click="openModal">Add task</button>
+      </div>
+
+    </section>
+
 
     <ModalComponent :isOpen="isModalOpened" @modal-close="closeModal" @submit="submitHandler" name="first-modal">
 

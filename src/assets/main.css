@@ -9,11 +9,15 @@ body * {
   font-family: "Poppins";
 }
 
+.main-container {
+  width: 100%;
+}
 
 /* task list */
 .task-list {
-  max-width: 640px;
-  margin: 20px auto;
+  /*max-width: 640px;*/
+  margin: 20px;
+
 }
 
 
@@ -42,7 +46,8 @@ header h1 {
 
 /* filter nav */
 .filter {
-  width: 640px;
+  /*width: 640px;*/
+  width: 100%;
   margin: 16px auto;
   text-align: right;
   display: flex;
@@ -74,6 +79,7 @@ header h1 {
   border-radius: 6px;
   cursor: pointer;
   font-size: 1em;
+  min-width: 50%;
 }
 
 .add-btn:hover {
@@ -88,15 +94,15 @@ header h1 {
 
 /* Add new task button*/
 .add-new-section {
-  width: 640px;
-  margin: 16px auto;
-  text-align: right;
+  /*width: 640px;*/
+  margin: 20px;
+  text-align: center;
 }
 
 
 /* loading state */
 .loading {
-  max-width: 640px;
+  /*max-width: 640px;*/
   border: 1px solid #ffd859;
   background: #ffe9a0;
   color: #3a3a3a;
@@ -119,3 +125,52 @@ header h1 {
 .material-icons.btn.isExpanded {
   color: red;
 }
+
+  /* Extra small devices (phones, less than 576px) */
+  @media (max-width: 575.98px) {
+    
+  }
+
+  /* Small devices (tablets, 576px and up) */
+  @media (min-width: 576px) {
+
+    .add-new-section {
+      text-align: right;
+    }
+
+    .add-btn {
+      min-width: unset;
+    }
+    
+  }
+
+  /* Medium devices (desktops, 768px and up) */
+  @media (min-width: 768px) {
+    .task-list {
+        margin: 20px 0;
+    }
+
+    .main-container {
+      width: 80%;
+      margin: auto;
+    }
+
+    .add-new-section {
+      margin: 20px 0;
+    }
+
+  }
+
+  /* Large devices (large desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .main-container {
+      max-width: 60%;
+    }
+  }
+
+  /* Extra large devices (1200px and up) */
+  @media (min-width: 1200px) { 
+    .main-container {
+      max-width: 50%;
+    }
+  }
