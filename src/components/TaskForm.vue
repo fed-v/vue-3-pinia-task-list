@@ -3,18 +3,18 @@
     <form @submit.prevent="handleSubmit">
 
         <label for="task">Task</label>
-
-        <input
-            id="task"
-            type="text"
-            v-model="newTask"
-        >
+        <input id="task" type="text" v-model="newTask" />
 
         <label for="details">Details</label>
+        <textarea id="details" v-model="newTaskDetails" />
 
-        <textarea
-            id="details"
-            v-model="newTaskDetails" />
+        <label for="priority">Priority</label>
+        <select id="priority" v-model="priority">
+            <option value="" disabled selected>Select priority</option>
+            <option value="normal">Normal</option>
+            <option value="important">Important</option>
+            <option value="urgent">Urgent</option>
+        </select>
 
         <button class="add-btn">Add</button>
 
@@ -30,15 +30,17 @@
     const taskStore = useTaskStore();
     const newTask = ref('');
     const newTaskDetails = ref('');
+    const priority = ref('');
 
-    // This method will check if newTask and task details are not empty then calls the task store and passes a new task object.
+    // This method will check fields aren't empty then calls the task store and passes a new task object.
     const handleSubmit = () => {
 
-        if(newTask.value.length > 0 && newTaskDetails.value.length > 0) {
+        if(newTask.value.length > 0 && newTaskDetails.value.length > 0 && priority.value !== '') {
 
             taskStore.addTask({
                 title: newTask.value,
                 description: newTaskDetails.value,
+                priority: priority.value,
                 isFav: false,
                 isDone: false,
 
@@ -76,7 +78,8 @@
     }
 
     form input,
-    textarea {
+    textarea,
+    select {
         border: 1px solid #777;
         border-radius: 4px;
         padding: 10px;

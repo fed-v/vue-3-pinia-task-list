@@ -2,7 +2,7 @@
 
 body {
   background: #f2f2f2;
-  color: #444;
+  color: #333;
   margin: 0;
 }
 body * {
@@ -81,6 +81,10 @@ header h1 {
   color: #fff;
 }
 
+.form-title h3 {
+  margin: 0;
+}
+
 
 /* Add new task button*/
 .add-new-section {
@@ -107,11 +111,11 @@ header h1 {
   font-size: 1.4em;
   margin-left: 6px;
   cursor: pointer;
-  color: #777;
+  color: #333;
 }
 
 .material-icons.btn:hover,
 .material-icons.btn.active,
 .material-icons.btn.isExpanded {
-  color: #ff005d;
+  color: red;
 }
