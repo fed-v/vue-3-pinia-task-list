@@ -12,6 +12,8 @@ This is a simple Vue application that showcases the usage of Pinia for state man
 
 * Detailed task descriptions that can be toggled for a simplified or detailed view
 
+* Followed best practices and accessibility guidelines (such as WCAG) to ensure the application meets the accessibility requirements, providing an inclusive experience for all users.
+
 ## Introduction
 
 Instead of relying on a traditional database, this project utilizes a JSON file to store data, allowing the focus to remain on exploring Pinia's capabilities. The project leverages the `json-server` package, which serves as a local environment server for the JSON file, creating endpoints for data manipulation.

@@ -1,29 +1,30 @@
-
 <template>
 
-  <div v-if="isOpen" class="overlay">
+  <div v-if="isOpen" class="overlay" aria-modal="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalContent">
 
     <div class="modal-wrapper">
-
+  
       <div class="modal-container" ref="target">
-
+  
         <div class="close-btn-container">
-          <i class="material-icons btn" @click.stop="emit('modal-close')">close</i>
+          <button class="close-btn" @click.stop="emit('modal-close')" aria-label="Close modal">
+            <i class="material-icons btn">close</i>
+          </button>
         </div>
-
+  
         <div class="modal-header">
           <slot name="header"> default header </slot>
         </div>
-
+  
         <div class="modal-body">
           <slot name="content"> default content </slot>
         </div>
-
+  
       </div>
-
+  
     </div>
-
-  </div>
+  
+  </div>  
 
 </template>
 
@@ -78,6 +79,11 @@
     justify-content: flex-end;
   }
 
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+  }
 
 
   /* Small devices (tablets, 576px and up) */

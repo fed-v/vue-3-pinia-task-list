@@ -2,23 +2,29 @@
 
     <form @submit.prevent="handleSubmit">
 
-        <label for="task">Task</label>
-        <input id="task" type="text" v-model="newTask" />
-
-        <label for="details">Details</label>
-        <textarea id="details" v-model="newTaskDetails" />
-
-        <label for="priority">Priority</label>
-        <select id="priority" v-model="priority">
-            <option value="" disabled selected>Select priority</option>
-            <option value="normal">Normal</option>
-            <option value="important">Important</option>
-            <option value="urgent">Urgent</option>
-        </select>
-
-        <button class="add-btn">Add</button>
-
-    </form>
+        <div>
+            <label for="task">Task:</label>
+            <input id="task" type="text" v-model="newTask" required aria-label="Enter task" />
+        </div>
+    
+        <div>
+            <label for="details">Details:</label>
+            <textarea id="details" v-model="newTaskDetails" aria-label="Enter task details"></textarea>
+        </div>
+    
+        <div>
+            <label for="priority">Priority:</label>
+            <select id="priority" v-model="priority" required aria-label="Select priority">
+                <option value="" disabled>Select priority</option>
+                <option value="normal">Normal</option>
+                <option value="important">Important</option>
+                <option value="urgent">Urgent</option>
+            </select>
+        </div>
+    
+        <button type="submit" class="add-btn">Add Task</button>
+    
+    </form>    
 
 </template>
 

@@ -1,4 +1,5 @@
 <template>
+
   <main>
 
     <!-- heading-->
@@ -7,7 +8,7 @@
       <h1>Pinia Tasks</h1>
     </header>
 
-    <section class="main-container">
+    <section class="main-container" aria-labelledby="tasks-heading">
 
       <!-- filter -->
       <nav class="filter">
@@ -25,7 +26,7 @@
       </nav>
 
       <!-- loading -->
-      <div class="loading" v-if="loading">
+      <div class="loading" v-if="loading" role="status" aria-label="Loading tasks">
         <h4>Loading...</h4>
       </div>
 
@@ -39,6 +40,7 @@
 
       <!-- favorites list -->
       <div class="task-list" v-if="filter === 'favs'">
+        <h2 id="tasks-heading">Favorite Tasks</h2>
         <p>You have {{ favCount === 0 ? 'no' : favCount }} favorite {{ favCount === 1 ? 'task' : 'tasks' }} left to do</p>
 
         <!-- Iterate through the task array and print the details for each -->
@@ -70,9 +72,11 @@
     </ModalComponent>
     
   </main>
+
 </template>
 
 <script setup>
+
   import { ref } from 'vue';
 	import TaskDetails from './components/TaskDetails.vue';
   import TaskForm from './components/TaskForm.vue';
