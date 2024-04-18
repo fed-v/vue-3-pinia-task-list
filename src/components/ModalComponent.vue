@@ -68,10 +68,40 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     border-radius: 10px;
   }
+  
+  .modal-wrapper {
+    margin: -120px;
+  }
 
   .close-btn-container {
     display: flex;
     justify-content: flex-end;
+  }
+
+
+
+  /* Small devices (tablets, 576px and up) */
+  @media (min-width: 576px) {
+
+  }
+
+  /* Medium devices (desktops, 768px and up) */
+  @media (min-width: 768px) {
+    .modal-wrapper {
+      margin: -100px;
+    }
+  }
+
+  /* Large devices (large desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .modal-wrapper {
+      margin: -50px;
+    }
+  }
+
+  /* Extra large devices (1200px and up) */
+  @media (min-width: 1200px) { 
+    
   }
 
 </style>

@@ -47,8 +47,8 @@ header h1 {
 /* filter nav */
 .filter {
   /*width: 640px;*/
-  width: 100%;
-  margin: 16px auto;
+  /*width: 100%;*/
+  margin: 20px;
   text-align: right;
   display: flex;
   justify-content: space-between;
@@ -126,51 +126,55 @@ header h1 {
   color: red;
 }
 
-  /* Extra small devices (phones, less than 576px) */
-  @media (max-width: 575.98px) {
-    
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  
+}
+
+/* Small devices (tablets, 576px and up) */
+@media (min-width: 576px) {
+
+  .add-new-section {
+    text-align: right;
   }
 
-  /* Small devices (tablets, 576px and up) */
-  @media (min-width: 576px) {
-
-    .add-new-section {
-      text-align: right;
-    }
-
-    .add-btn {
-      min-width: unset;
-    }
-    
+  .add-btn {
+    min-width: unset;
   }
+  
+}
 
-  /* Medium devices (desktops, 768px and up) */
-  @media (min-width: 768px) {
-    .task-list {
-        margin: 20px 0;
-    }
-
-    .main-container {
-      width: 80%;
-      margin: auto;
-    }
-
-    .add-new-section {
+/* Medium devices (desktops, 768px and up) */
+@media (min-width: 768px) {
+  .task-list {
       margin: 20px 0;
-    }
-
   }
 
-  /* Large devices (large desktops, 992px and up) */
-  @media (min-width: 992px) {
-    .main-container {
-      max-width: 60%;
-    }
+  .filter {
+    margin: 20px 0;
   }
 
-  /* Extra large devices (1200px and up) */
-  @media (min-width: 1200px) { 
-    .main-container {
-      max-width: 50%;
-    }
+  .main-container {
+    width: 80%;
+    margin: auto;
   }
+
+  .add-new-section {
+    margin: 20px 0;
+  }
+
+}
+
+/* Large devices (large desktops, 992px and up) */
+@media (min-width: 992px) {
+  .main-container {
+    max-width: 60%;
+  }
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 1200px) { 
+  .main-container {
+    max-width: 50%;
+  }
+}

@@ -1,6 +1,16 @@
 # Vue 3 Pinia Task List
 
-This is a simple Vue application that showcases the usage of Pinia for state management.
+This is a simple Vue application that showcases the usage of Pinia for state management. Features for the application include: 
+
+* CRUD operations powered by Pinia state management and a JSON server backend.
+
+* Responsive designed achieved through CSS3 media queries. 
+
+* Task prioritization with dynamic CSS classes for clear visualization.
+
+* Mark tasks as favorites or completed for streamlined organization.
+
+* Detailed task descriptions that can be toggled for a simplified or detailed view
 
 ## Introduction
 
