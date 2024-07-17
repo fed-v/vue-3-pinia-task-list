@@ -16,6 +16,9 @@ This is a simple Vue application that showcases the usage of Pinia for state man
 
 * Pinia store unit tests using Vitest
 
+![Homepage screen capture](homepage.png?raw=true "Homepage screen capture")
+![Homepage with modal screen capture](modal.png?raw=true "Homepage with modal screen capture")
+
 ## Introduction
 
 Instead of relying on a traditional database, this project utilizes a JSON file to store data, allowing the focus to remain on exploring Pinia's capabilities. The project leverages the `json-server` package, which serves as a local environment server for the JSON file, creating endpoints for data manipulation.
