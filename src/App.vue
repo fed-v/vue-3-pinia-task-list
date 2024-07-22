@@ -34,7 +34,7 @@
       <div class="task-list" v-if="filter === 'all'">
         <p>You have {{ totalCount === 0 ? 'no' : totalCount }} {{ totalCount === 1 ? 'task' : 'tasks' }} left to do</p>
         <div v-for="task in tasks" :key="task.id">
-          <TaskDetails :task="task" />
+          <TaskDetails :task="task" v-motion-slide-right :delay="300" />
         </div>
       </div>
 
@@ -45,7 +45,7 @@
 
         <!-- Iterate through the task array and print the details for each -->
         <div v-for="task in favs" :key="task.id">
-          <TaskDetails :task="task" />
+          <TaskDetails :task="task" v-motion-slide-right :delay="300" />
         </div>
 
       </div>
@@ -83,6 +83,7 @@
   import { useTaskStore } from './stores/TaskStore';
   import { storeToRefs } from 'pinia';
   import ModalComponent from "./components/ModalComponent.vue";
+
 
 
 
