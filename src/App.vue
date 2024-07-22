@@ -34,7 +34,7 @@
       <div class="task-list" v-if="filter === 'all'">
         <p>You have {{ totalCount === 0 ? 'no' : totalCount }} {{ totalCount === 1 ? 'task' : 'tasks' }} left to do</p>
         <div v-for="task in tasks" :key="task.id">
-          <TaskDetails :task="task" v-motion-slide-right :delay="300" />
+          <TaskDetails :task="task" v-motion :initial="initial" :enter="enter" :delay="300" />
         </div>
       </div>
 
@@ -45,7 +45,7 @@
 
         <!-- Iterate through the task array and print the details for each -->
         <div v-for="task in favs" :key="task.id">
-          <TaskDetails :task="task" v-motion-slide-right :delay="300" />
+          <TaskDetails :task="task" v-motion :initial="initial" :enter="enter" :delay="300" />
         </div>
 
       </div>
@@ -85,6 +85,22 @@
   import ModalComponent from "./components/ModalComponent.vue";
 
 
+  const initial= {
+    x: -500,
+    opacity: 0,
+    transition: {
+      stiffness: 100,
+    }
+  }
+
+  const enter = {
+    x: 0,
+    opacity: 1,
+    transition: {
+      stiffness: 100,
+      ease: 'easeInOut',
+    }
+  }
 
 
   // Reference the store and save it
@@ -106,8 +122,16 @@
     isModalOpened.value = true;
   };
 
-  const closeModal = () => {
+  // This method handles the emit event from the TaskForm & Modal components
+  const closeModal = (message) => {
+    
     isModalOpened.value = false;
+
+    // If the form submission was successful, reset the filter to 'all' to show the newly added task!
+    if(message) { 
+      filter.value = 'all' 
+    };
+
   };
 
 </script>

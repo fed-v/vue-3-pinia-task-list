@@ -60,7 +60,7 @@
             newTaskDetails.value = '';
 
             // Emit the modal-close event to close the modal
-            emit('modal-close');
+            emit('modal-close', 'success');
 
         }
     };        
