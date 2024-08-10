@@ -15,6 +15,7 @@ This is a simple Vue application that showcases the usage of Pinia for state man
 * Followed best practices and accessibility guidelines (such as WCAG) to ensure the application meets the accessibility requirements, providing an inclusive experience for all users.
 
 * Pinia store unit tests using Vitest
+* Dockerfile and Docker Compose to efficiently build and run both the Vue app and JSON server services in a development environment.
 
 ![Homepage screen capture](homepage.png?raw=true "Homepage screen capture")
 ![Homepage with modal screen capture](modal.png?raw=true "Homepage with modal screen capture")
@@ -85,6 +86,19 @@ pnpm run test
 # yarn
 yarn test
 ```
+
+### Docker
+
+Create and start the development container:
+
+  ```bash
+  docker compose up --build -d
+  ```
+Stop and remove the development container:
+
+  ```bash
+  docker compose down
+  ```
 
 ## Further reading
 

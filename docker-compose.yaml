@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  vue-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vue-app
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - vue-network
+    depends_on:
+      - json-server
+
+  json-server:
+    image: node:20-alpine
+    container_name: json-server
+    working_dir: /data
+    volumes:
+      - ./data:/data
+    command: ["npx", "json-server", "-w", "db.json"]
+    ports:
+      - 3000:3000
+    networks:
+      - vue-network
+
+networks:
+  vue-network:
+    driver: bridge
