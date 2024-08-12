@@ -1,4 +1,9 @@
-FROM node:lts-alpine
+# syntax=docker/dockerfile:1
+
+ARG NODE_VERSION=20.11.0
+
+# Set the base image
+FROM node:${NODE_VERSION}-alpine AS base
 
 # install simple http server for serving static content
 RUN npm install -g http-server
