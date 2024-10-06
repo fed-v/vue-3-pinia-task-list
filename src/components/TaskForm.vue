@@ -1,20 +1,37 @@
 <template>
 
-    <form @submit.prevent="handleSubmit">
+    <form role="form" @submit.prevent="handleSubmit">
 
         <div>
-            <label for="task">Task:</label>
-            <input id="task" type="text" v-model="newTask" required aria-label="Enter task" />
+            <label id="task-label" for="task">Task:</label>
+            <input 
+                id="task" 
+                type="text"
+                role="textbox" 
+                autocomplete="task name"
+                v-model="newTask" 
+                required 
+                aria-labelledby="task-label"
+            />
         </div>
     
         <div>
-            <label for="details">Details:</label>
-            <textarea id="details" v-model="newTaskDetails" aria-label="Enter task details"></textarea>
+            <label id="details-label" for="details">Details:</label>
+            <textarea 
+                id="details" 
+                v-model="newTaskDetails"
+                aria-labelledby="details-label" 
+            ></textarea>
         </div>
     
         <div>
-            <label for="priority">Priority:</label>
-            <select id="priority" v-model="priority" required aria-label="Select priority">
+            <label id="priority-label" for="priority">Priority:</label>
+            <select 
+                id="priority" 
+                v-model="priority" 
+                required 
+                aria-labelledby="priority-label"
+            >
                 <option value="" disabled>Select priority</option>
                 <option value="normal">Normal</option>
                 <option value="important">Important</option>

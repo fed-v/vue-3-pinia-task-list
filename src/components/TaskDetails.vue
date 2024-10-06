@@ -6,7 +6,7 @@
         <div class="task-header">
 
             <div>
-                <input @click="taskStore.toggleStatus(props.task.id, 'isDone')" type="checkbox" id="" name="" value="" :checked="props.task.isDone"/>
+                <input @click="taskStore.toggleStatus(props.task.id, 'isDone')" type="checkbox" id="" name="" value="" :checked="props.task.isDone" aria-label="Check as done" />
                 <h3>{{ props.task.title }}</h3><span class="priority-title" v-if="props.task.priority === 'urgent' | props.task.priority === 'important'">* {{ props.task.priority}}</span>
             </div>
             

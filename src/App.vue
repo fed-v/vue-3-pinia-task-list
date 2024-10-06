@@ -10,6 +10,11 @@
 
     <section class="main-container" aria-labelledby="tasks-heading">
 
+      <!-- Add the tasks-heading here so it’s always present -->
+      <h2 id="tasks-heading">
+        {{ filter === 'favs' ? 'Favorite Tasks' : 'All Tasks' }}
+      </h2>
+
       <!-- filter -->
       <nav class="filter">
         <div>
@@ -40,14 +45,12 @@
 
       <!-- favorites list -->
       <div class="task-list" v-if="filter === 'favs'">
-        <h2 id="tasks-heading">Favorite Tasks</h2>
         <p>You have {{ favCount === 0 ? 'no' : favCount }} favorite {{ favCount === 1 ? 'task' : 'tasks' }} left to do</p>
 
         <!-- Iterate through the task array and print the details for each -->
         <div v-for="task in favs" :key="task.id">
           <TaskDetails :task="task" v-motion :initial="initial" :enter="enter" :delay="300" />
         </div>
-
       </div>
 
       <div class="add-new-section">
